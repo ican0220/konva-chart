@@ -147,7 +147,7 @@ const BarChart = ({
           x={w - 160}
           y={20}
           fontSize={valueFontSize}
-          text={currency == 'kr'?  curMonth.toFixed(0) + currency : currency + curMonth.toFixed(0)}
+          text={currency == 'kr'? ( curMonth.toFixed(0) + ',' + (parseInt(curMonth.toFixed(2)) - parseInt(curMonth.toFixed(0))) * 100 + currency) : currency + curMonth.toFixed(0)}
           fill={"white"}
           width={150}
           align="center"

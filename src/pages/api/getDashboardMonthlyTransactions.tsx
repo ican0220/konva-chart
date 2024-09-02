@@ -2,7 +2,24 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import axios from "axios";
 import { ENV_VARS } from "@/config";
-import JsonResponse from "../../../mocked-data/D1LrrJm3cdZ_zUUan1GNb/getDashboardMonthlyTransactions-1.json";
+import JsonResponse1 from "../../../mocked-data/D1LrrJm3cdZ_zUUan1GNb/getDashboardMonthlyTransactions-1.json";
+import JsonResponse2 from "../../../mocked-data/duJegnGtdGNx_bpWBDEjn/getDashboardMonthlyTransactions-1.json";
+import JsonResponse3 from "../../../mocked-data/mVne-qaDjOmfihJbvFmUQ/getDashboardMonthlyTransactions-1.json";
+
+const json_response = [
+  {
+    key: "D1LrrJm3cdZ_zUUan1GNb",
+    value: JsonResponse1
+  },
+  {
+    key: "duJegnGtdGNx_bpWBDEjn",
+    value: JsonResponse2
+  },
+  {
+    key: "mVne-qaDjOmfihJbvFmUQ",
+    value: JsonResponse3
+  }
+];
 
 const handler = (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === "POST") {
@@ -23,7 +40,8 @@ const handler = (req: NextApiRequest, res: NextApiResponse) => {
     //       throw err;
     //     });
 
-      return res.status(200).json(JsonResponse);
+      let _ = json_response.filter((_: any, index: any) => d == _.key)
+      return res.status(200).json(_.length > 0 ? _[0].value: JsonResponse1);
     } catch (error) {
       console.error("Error fetching dashboard data:", error);
       return res.status(500).json({ error: "Internal server error" });
