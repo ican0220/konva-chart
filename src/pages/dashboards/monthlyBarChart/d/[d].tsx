@@ -131,7 +131,10 @@ export default function Home(props: any) {
             Daily transaction revenue(rolling 24h)
           </h5>
           <p className="text-center md:text-[85px] text-[24px] font-medium tracking-widest">
-            {symbol == "kr" ? dailyTransactionRevenue + symbol : symbol + dailyTransactionRevenue}
+            {new Intl.NumberFormat("sv-SE", {
+              style: "currency",
+              currency: "SEK",
+            }).format(dailyTransactionRevenue)}
           </p>
         </div>
       </div>
