@@ -1,0 +1,17 @@
+{
+    "rewrites": [
+      {
+        "source": "/getDashboardMonthlyTransactions",
+        "destination": "/api/getDashboardMonthlyTransactions"
+      },
+      {
+        "source": "/getDashboardRollingTransactions",
+        "destination": "/api/getDashboardRollingTransactions"
+      },
+      {
+        "source": "/getDashboardTransactionScheduling",
+        "destination": "/api/getDashboardTransactionScheduling"
+      }
+    ]
+  }
+  
