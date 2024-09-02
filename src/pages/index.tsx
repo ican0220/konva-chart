@@ -21,11 +21,11 @@ const currencies = [
 ];
 let transactionIdList: any[] = []; // a list of ids of transaction that have already occurred.
 
-const containedInList = (id : string) => {
+const containedInList = (id: string) => {
   let filtered = transactionIdList.filter((_: any, index: any) => _ == id);
   if (filtered.length > 0) return true;
   else return false;
-}
+};
 export default function Home(props: any) {
   const [newRev, setNewRev] = useState(0);
   const [chartWidth, setChartWidth] = useState(10);
@@ -33,9 +33,10 @@ export default function Home(props: any) {
   const [dailyTransactions, setDailyTransactions] = useState(0);
   const [dailyTransactionRevenue, setDailyTransactionRevenue] = useState(0);
 
-  const getRollingTransactions = async() => {
+  const getRollingTransactions = async () => {
     const res = await fetch(
-      "https://konva-chart.vercel.app/" +  "/api/getDashboardTransactionScheduling",
+      "https://konva-chart.vercel.app/" +
+        "/api/getDashboardTransactionScheduling",
       {
         method: "POST",
         headers: {
@@ -46,17 +47,22 @@ export default function Home(props: any) {
     );
     const data = await res.json();
     const transactions = data.transactions;
-    transactions.map((_ : any, index: any) => {
-      if(!containedInList(_.transactionId)){ // if incoming transaction is not contained in list of ids of transaction that have already ocurred.
-        console.log(_, 'scheduled time')
-        setTimeout(displayRollingRevenue, (new Date( _.scheduled)).getTime() - Date.now() + 30 * 60 * 1000) // display into konva chart with delayed 30 mins.
-      } 
-    })
+    transactions.map((_: any, index: any) => {
+      if (!containedInList(_.transactionId)) {
+        // if incoming transaction is not contained in list of ids of transaction that have already ocurred.
+        console.log(_, "scheduled time");
+        setTimeout(
+          displayRollingRevenue,
+          new Date(_.scheduled).getTime() - Date.now() + 30 * 60 * 1000
+        ); // display into konva chart with delayed 30 mins.
+      }
+    });
   };
-  
-  const displayRollingRevenue = async() => {
+
+  const displayRollingRevenue = async () => {
     const res = await fetch(
-      "https://konva-chart.vercel.app/"  + "/api/getDashboardRollingTransactions",
+      "https://konva-chart.vercel.app/" +
+        "/api/getDashboardRollingTransactions",
       {
         method: "POST",
         headers: {
@@ -127,7 +133,10 @@ export default function Home(props: any) {
             Daily transaction revenue(rolling 24h)
           </h5>
           <p className="text-center md:text-[85px] text-[24px] font-medium tracking-widest">
-            {symbol == "kr" ? dailyTransactionRevenue + symbol : symbol + dailyTransactionRevenue}
+            {new Intl.NumberFormat("sv-SE", {
+              style: "currency",
+              currency: "SEK",
+            }).format(dailyTransactionRevenue)}
           </p>
         </div>
       </div>
@@ -136,9 +145,11 @@ export default function Home(props: any) {
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  try{
-    console.log('data fetching....')
-    const res = await fetch("https://konva-chart.vercel.app/" + `/api/getDashboardMonthlyTransactions`,
+  try {
+    console.log("data fetching....");
+    const res = await fetch(
+      "https://konva-chart.vercel.app/" +
+        `/api/getDashboardMonthlyTransactions`,
       {
         method: "POST",
         headers: {
@@ -150,13 +161,15 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     const data = await res.json();
     return {
       props: {
-        data: data
-      }
+        data: data,
+      },
     };
-  } catch(error) {
-    return {props: {
-      data: null,
-      error: 'error occurred'
-    }}
+  } catch (error) {
+    return {
+      props: {
+        data: null,
+        error: "error occurred",
+      },
+    };
   }
 };

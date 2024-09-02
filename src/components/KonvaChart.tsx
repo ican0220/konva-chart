@@ -3,42 +3,40 @@ import React, { useEffect, useRef, useState } from "react";
 import { Stage, Layer, Rect, Text, Line, Circle } from "react-konva";
 import Konva from "konva";
 import { barColors } from "../config";
-React.useLayoutEffect = React.useEffect 
+React.useLayoutEffect = React.useEffect;
 
-
-interface SeriesType{
-  label: string,
-  color: string
+interface SeriesType {
+  label: string;
+  color: string;
 }
 
-interface RevenueDataType{
-  revenue: number,
-  year: number,
-  month: number,
-  transactions: number
+interface RevenueDataType {
+  revenue: number;
+  year: number;
+  month: number;
+  transactions: number;
 }
 
-interface IBarChart{
-  w: number,
-  h: number,
-  revenueData: Array<RevenueDataType>,
-  maxData: number,
-  series: Array<SeriesType>,
-  xLabels: Array<string>,
-  xLabelSize: number,
-  xLabelFontSize: number,
-  yLabelSize:  number,
-  currency: string,
-  onComingRev: number,
-  barSpacing: number,
-  startSpacing: number,
-  lastSpacing: number,
-  seriesSize: number,
-  valueFontSize: number,
-  yLabelFontSize: number,
-  marginTop: number,
+interface IBarChart {
+  w: number;
+  h: number;
+  revenueData: Array<RevenueDataType>;
+  maxData: number;
+  series: Array<SeriesType>;
+  xLabels: Array<string>;
+  xLabelSize: number;
+  xLabelFontSize: number;
+  yLabelSize: number;
+  currency: string;
+  onComingRev: number;
+  barSpacing: number;
+  startSpacing: number;
+  lastSpacing: number;
+  seriesSize: number;
+  valueFontSize: number;
+  yLabelFontSize: number;
+  marginTop: number;
 }
-
 
 const BarChart = ({
   w,
@@ -57,34 +55,41 @@ const BarChart = ({
   lastSpacing,
   seriesSize,
   valueFontSize,
-} : IBarChart) => {
+}: IBarChart) => {
   const barWidth =
     (w - yLabelSize - startSpacing - lastSpacing - 11 * barSpacing) / 3 / 12;
-  const circleRadius = Math.abs( barWidth / 8 );
+  const circleRadius = Math.abs(barWidth / 8);
   const seriesWidth = seriesSize;
 
   const nodeRefs = useRef<Array<any>>([]);
   const [curMonth, setCurMonth] = useState(0);
-  
+
   useEffect(() => {
-    setCurMonth((h - xLabelSize - 50) / 10000 * onComingRev + curMonth);
+    setCurMonth(((h - xLabelSize - 50) / 10000) * onComingRev + curMonth);
     nodeRefs.current.forEach((node: any, index) => {
       if (curMonth !== 0) {
         if (index === 0) {
-        } else if (index === 1) {// current month
+        } else if (index === 1) {
+          // current month
           node.to({
             height: ((h - xLabelSize - seriesWidth * 5) / maxData) * curMonth,
             duration: 2,
             easing: Konva.Easings.EaseIn,
           });
-          if (((h - xLabelSize - 50) / maxData) * curMonth > h - xLabelSize - 50) {
+          if (
+            ((h - xLabelSize - 50) / maxData) * curMonth >
+            h - xLabelSize - 50
+          ) {
             node.setAttrs({ height: 0 });
             setCurMonth(0);
           }
-        } else {// coins falling
+        } else {
+          // coins falling
           var tween = new Konva.Tween({
             node: node,
-            duration: 2/(h - xLabelSize + 10 - 5) * (h-xLabelSize + 10 - 5 + 60 * (index - 2)),
+            duration:
+              (2 / (h - xLabelSize + 10 - 5)) *
+              (h - xLabelSize + 10 - 5 + 60 * (index - 2)),
             y: h - xLabelSize - 5,
             easing: Konva.Easings.Linear,
             onFinish: () => {
@@ -124,10 +129,7 @@ const BarChart = ({
         {/* Draw y labels */}
         {[...Array(6)].map((_, index) => {
           let x = -5;
-          let y =
-            h -
-            xLabelSize -
-            ((h - xLabelSize - 50) / 5) * index;
+          let y = h - xLabelSize - ((h - xLabelSize - 50) / 5) * index;
           return (
             <React.Fragment key={index}>
               <Text
@@ -147,7 +149,14 @@ const BarChart = ({
           x={w - 160}
           y={20}
           fontSize={valueFontSize}
-          text={currency == 'kr'? ( curMonth.toFixed(0) + ',' + (parseInt(curMonth.toFixed(2)) - parseInt(curMonth.toFixed(0))) * 100 + currency) : currency + curMonth.toFixed(0)}
+          text={
+            currency == "kr"
+              ? new Intl.NumberFormat("sv-SE", {
+                  style: "currency",
+                  currency: "SEK",
+                }).format(curMonth)
+              : currency + curMonth.toFixed(0)
+          }
           fill={"white"}
           width={150}
           align="center"
@@ -218,9 +227,14 @@ const BarChart = ({
                   y={h - xLabelSize}
                   width={barWidth}
                   height={
-                    ((h - xLabelSize - 50) / 5 /20000) * revenueData[index].revenue
+                    ((h - xLabelSize - 50) / 5 / 20000) *
+                    revenueData[index].revenue
                   }
-                  fill={revenueData[index].year == 2021 ? barColors.color1: barColors.color2}
+                  fill={
+                    revenueData[index].year == 2021
+                      ? barColors.color1
+                      : barColors.color2
+                  }
                   scaleY={-1}
                 />
                 <Rect
@@ -228,9 +242,14 @@ const BarChart = ({
                   y={h - xLabelSize}
                   width={barWidth}
                   height={
-                    ((h - xLabelSize - 50) / 5 /20000) * revenueData[index + 12].revenue
+                    ((h - xLabelSize - 50) / 5 / 20000) *
+                    revenueData[index + 12].revenue
                   }
-                  fill={revenueData[index + 12].year == 2022 ? barColors.color2: barColors.color3}
+                  fill={
+                    revenueData[index + 12].year == 2022
+                      ? barColors.color2
+                      : barColors.color3
+                  }
                   scaleY={-1}
                 />
                 {index === 11 ? (
@@ -249,9 +268,14 @@ const BarChart = ({
                     y={h - xLabelSize}
                     width={barWidth}
                     height={
-                      ((h - xLabelSize - 50) / 5 /20000) * revenueData[index + 24].revenue
+                      ((h - xLabelSize - 50) / 5 / 20000) *
+                      revenueData[index + 24].revenue
                     }
-                    fill={revenueData[index + 24].year == 2024 ? barColors.color4: barColors.color3}
+                    fill={
+                      revenueData[index + 24].year == 2024
+                        ? barColors.color4
+                        : barColors.color3
+                    }
                     scaleY={-1}
                   />
                 )}
