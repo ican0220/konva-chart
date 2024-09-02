@@ -35,7 +35,7 @@ export default function Home(props: any) {
 
   const getRollingTransactions = async() => {
     const res = await fetch(
-      process.env.NEXT_PUBLIC_BASE_URL + "/api/getDashboardTransactionScheduling",
+      "https://konva-chart.vercel.app/" +  "/api/getDashboardTransactionScheduling",
       {
         method: "POST",
         headers: {
@@ -56,7 +56,7 @@ export default function Home(props: any) {
   
   const displayRollingRevenue = async() => {
     const res = await fetch(
-      process.env.NEXT_PUBLIC_BASE_URL + "/api/getDashboardRollingTransactions",
+      "https://konva-chart.vercel.app/"  + "/api/getDashboardRollingTransactions",
       {
         method: "POST",
         headers: {
@@ -138,7 +138,7 @@ export default function Home(props: any) {
 export const getServerSideProps: GetServerSideProps = async (context) => {
   try{
     console.log('data fetching....')
-    const res = await fetch(process.env.NEXT_PUBLIC_BASE_URL + `/api/getDashboardMonthlyTransactions`,
+    const res = await fetch("https://konva-chart.vercel.app/" + `/api/getDashboardMonthlyTransactions`,
       {
         method: "POST",
         headers: {
