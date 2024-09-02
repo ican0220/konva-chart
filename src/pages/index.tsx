@@ -35,7 +35,7 @@ export default function Home(props: any) {
 
   const getRollingTransactions = async() => {
     const res = await fetch(
-      "http://localhost:3000/api/getDashboardTransactionScheduling",
+      process.env.NEXT_PUBLIC_BASE_URL + "/api/getDashboardTransactionScheduling",
       {
         method: "POST",
         headers: {
@@ -56,7 +56,7 @@ export default function Home(props: any) {
   
   const displayRollingRevenue = async() => {
     const res = await fetch(
-      "http://localhost:3000/api/getDashboardRollingTransactions",
+      process.env.NEXT_PUBLIC_BASE_URL + "/api/getDashboardRollingTransactions",
       {
         method: "POST",
         headers: {
