@@ -1,0 +1,221 @@
+{
+    "currency": "EUR",
+    "months": [
+        {
+            "year": 2021,
+            "month": 9,
+            "revenue": 9066,
+            "transactions": 2978
+        },
+        {
+            "year": 2021,
+            "month": 10,
+            "revenue": 9088,
+            "transactions": 3001
+        },
+        {
+            "year": 2021,
+            "month": 11,
+            "revenue": 8959,
+            "transactions": 2964
+        },
+        {
+            "year": 2021,
+            "month": 12,
+            "revenue": 9055,
+            "transactions": 2990
+        },
+        {
+            "year": 2022,
+            "month": 1,
+            "revenue": 7082,
+            "transactions": 2410
+        },
+        {
+            "year": 2022,
+            "month": 2,
+            "revenue": 6977,
+            "transactions": 2294
+        },
+        {
+            "year": 2022,
+            "month": 3,
+            "revenue": 7085,
+            "transactions": 2384
+        },
+        {
+            "year": 2022,
+            "month": 4,
+            "revenue": 7059,
+            "transactions": 2337
+        },
+        {
+            "year": 2022,
+            "month": 5,
+            "revenue": 6986,
+            "transactions": 2318
+        },
+        {
+            "year": 2022,
+            "month": 6,
+            "revenue": 5972,
+            "transactions": 2010
+        },
+        {
+            "year": 2022,
+            "month": 7,
+            "revenue": 6056,
+            "transactions": 2026
+        },
+        {
+            "year": 2022,
+            "month": 8,
+            "revenue": 6075,
+            "transactions": 2055
+        },
+        {
+            "year": 2022,
+            "month": 9,
+            "revenue": 7085,
+            "transactions": 2362
+        },
+        {
+            "year": 2022,
+            "month": 10,
+            "revenue": 7039,
+            "transactions": 2389
+        },
+        {
+            "year": 2022,
+            "month": 11,
+            "revenue": 6969,
+            "transactions": 2303
+        },
+        {
+            "year": 2022,
+            "month": 12,
+            "revenue": 7054,
+            "transactions": 2326
+        },
+        {
+            "year": 2023,
+            "month": 1,
+            "revenue": 4935,
+            "transactions": 1678
+        },
+        {
+            "year": 2023,
+            "month": 2,
+            "revenue": 4979,
+            "transactions": 1695
+        },
+        {
+            "year": 2023,
+            "month": 3,
+            "revenue": 4973,
+            "transactions": 1694
+        },
+        {
+            "year": 2023,
+            "month": 4,
+            "revenue": 4937,
+            "transactions": 1655
+        },
+        {
+            "year": 2023,
+            "month": 5,
+            "revenue": 5057,
+            "transactions": 1733
+        },
+        {
+            "year": 2023,
+            "month": 6,
+            "revenue": 3921,
+            "transactions": 1313
+        },
+        {
+            "year": 2023,
+            "month": 7,
+            "revenue": 3958,
+            "transactions": 1346
+        },
+        {
+            "year": 2023,
+            "month": 8,
+            "revenue": 4085,
+            "transactions": 1398
+        },
+        {
+            "year": 2023,
+            "month": 9,
+            "revenue": 4931,
+            "transactions": 1648
+        },
+        {
+            "year": 2023,
+            "month": 10,
+            "revenue": 4926,
+            "transactions": 1661
+        },
+        {
+            "year": 2023,
+            "month": 11,
+            "revenue": 4915,
+            "transactions": 1660
+        },
+        {
+            "year": 2023,
+            "month": 12,
+            "revenue": 5008,
+            "transactions": 1708
+        },
+        {
+            "year": 2024,
+            "month": 1,
+            "revenue": 3022,
+            "transactions": 1005
+        },
+        {
+            "year": 2024,
+            "month": 2,
+            "revenue": 3098,
+            "transactions": 989
+        },
+        {
+            "year": 2024,
+            "month": 3,
+            "revenue": 3068,
+            "transactions": 993
+        },
+        {
+            "year": 2024,
+            "month": 4,
+            "revenue": 2995,
+            "transactions": 964
+        },
+        {
+            "year": 2024,
+            "month": 5,
+            "revenue": 2950,
+            "transactions": 969
+        },
+        {
+            "year": 2024,
+            "month": 6,
+            "revenue": 2026,
+            "transactions": 661
+        },
+        {
+            "year": 2024,
+            "month": 7,
+            "revenue": 2068,
+            "transactions": 676
+        },
+        {
+            "year": 2024,
+            "month": 8,
+            "revenue": 2321,
+            "transactions": 751
+        }
+    ]
+}

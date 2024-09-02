@@ -1,0 +1,7 @@
+{
+    "currency": "USD",
+    "rolling60minutesTransactions": 30,
+    "rolling60minutesTransactionsRevenue": 85,
+    "rolling24HoursTransactions": 415,
+    "rolling24HoursTransactionsRevenue": 1240
+}

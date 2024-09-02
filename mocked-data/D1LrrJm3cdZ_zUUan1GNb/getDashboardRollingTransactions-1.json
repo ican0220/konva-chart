@@ -1,0 +1,7 @@
+{
+    "currency": "SEK",
+    "rolling60minutesTransactions": 250,
+    "rolling60minutesTransactionsRevenue": 750,
+    "rolling24HoursTransactions": 4050,
+    "rolling24HoursTransactionsRevenue": 12150
+}
