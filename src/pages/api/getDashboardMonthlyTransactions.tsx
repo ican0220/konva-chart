@@ -40,7 +40,8 @@ const handler = (req: NextApiRequest, res: NextApiResponse) => {
     //       throw err;
     //     });
 
-      let _ = json_response.filter((_: any, index: any) => d == _.key)
+      let _ = json_response.filter((_: any, index: any) => d.d == _.key)
+      console.log(_, d)
       return res.status(200).json(_.length > 0 ? _[0].value: JsonResponse1);
     } catch (error) {
       console.error("Error fetching dashboard data:", error);
