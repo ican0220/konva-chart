@@ -53,7 +53,7 @@ export default function Home(props: any) {
         console.log(_, "scheduled time");
         setTimeout(
           displayRollingRevenue,
-          new Date(_.scheduled).getTime() - Date.now() + 30 * 60 * 1000
+          new Date(_.scheduled).getTime() - Date.now() + 5 * 60 * 1000
         ); // display into konva chart with delayed 30 mins.
       }
     });
@@ -72,7 +72,7 @@ export default function Home(props: any) {
       }
     );
     const data = await res.json();
-    setNewRev(data.rolling60minutesTransactions);
+    setNewRev(newRev  => newRev + data.rolling60minutesTransactions);
     setDailyTransactionRevenue(data.rolling24HoursTransactionsRevenue);
     setDailyTransactions(data.rolling24HoursTransactions);
   };

@@ -52,8 +52,7 @@ export default function Home(props: any) {
     const transactions = data.transactions;
     transactions.map((_ : any, index: any) => {
       if(!containedInList(_.transactionId)){ // if incoming transaction is not contained in list of ids of transaction that have already ocurred.
-        console.log(_, 'scheduled time')
-        setTimeout(displayRollingRevenue, (new Date( _.scheduled)).getTime() - Date.now() + 30 * 60 * 1000) // display into konva chart with delayed 30 mins.
+        setTimeout(displayRollingRevenue, (new Date( _.scheduled)).getTime() - Date.now() + 5 * 1000) // display into konva chart with delayed 30 mins.
       } 
     })
   };
@@ -70,7 +69,7 @@ export default function Home(props: any) {
       }
     );
     const data = await res.json();
-    setNewRev(data.rolling60minutesTransactions);
+    setNewRev(newRev => newRev + data.rolling60minutesTransactionsRevenue);
     setDailyTransactionRevenue(data.rolling24HoursTransactionsRevenue);
     setDailyTransactions(data.rolling24HoursTransactions);
   };

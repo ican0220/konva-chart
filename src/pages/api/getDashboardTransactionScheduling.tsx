@@ -14,29 +14,30 @@ function getFutureDate(millisecondsInFuture: number) {
 }
 
 var mockedData = {
-  transactions: [
-    {
-      transactionId: crypto.randomUUID(),
-      scheduled: getFutureDate(2000),
-    },
-    {
-      transactionId: crypto.randomUUID(),
-      scheduled: getFutureDate(3000),
-    },
-    {
-      transactionId: crypto.randomUUID(),
-      scheduled: getFutureDate(10 * 1000),
-    },
-    {
-      transactionId: crypto.randomUUID(),
-      scheduled: getFutureDate(10050),
-    },
-    {
-      transactionId: crypto.randomUUID(),
-      scheduled: getFutureDate(11050),
-    },
-  ],
-};
+  "transactions": [
+      {
+          "transactionId": crypto.randomUUID(),
+          "scheduled": getFutureDate(2000)
+      },
+      {
+          "transactionId": crypto.randomUUID(),
+          "scheduled": getFutureDate(2000  +  10 * 1000)
+      },
+      {
+          "transactionId": crypto.randomUUID(),
+          "scheduled": getFutureDate(2000 +  20 * 1000)
+      },
+      {
+          "transactionId": crypto.randomUUID(),
+          "scheduled": getFutureDate(2000 +  30 * 1000)
+      },
+      {
+          "transactionId": crypto.randomUUID(),
+          "scheduled": getFutureDate(2000 +  60 * 1000)
+      },
+
+  ]
+}
 
 const handler = (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === "POST") {
