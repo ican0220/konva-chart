@@ -65,7 +65,7 @@ const BarChart = ({
   const [curMonth, setCurMonth] = useState(0);
 
   useEffect(() => {
-    setCurMonth(((h - xLabelSize - 50) / 10000) * onComingRev + curMonth);
+    setCurMonth(((h - xLabelSize - 50) / (currency =='kr'? 10000: 1000)) * onComingRev + curMonth);
     nodeRefs.current.forEach((node: any, index) => {
       if (curMonth !== 0) {
         if (index === 0) {
@@ -136,7 +136,7 @@ const BarChart = ({
                 x={x}
                 y={y}
                 fontSize={16}
-                text={(20000 * index).toString()}
+                text={( (currency =='kr'? 20000: 2000) * index).toString()}
                 fill={"white"}
                 width={yLabelSize}
                 align="right"
@@ -227,7 +227,7 @@ const BarChart = ({
                   y={h - xLabelSize}
                   width={barWidth}
                   height={
-                    ((h - xLabelSize - 50) / 5 / 20000) *
+                    ((h - xLabelSize - 50) / 5 /  (currency =='kr'? 20000: 2000)) *
                     revenueData[index].revenue
                   }
                   fill={
@@ -242,7 +242,7 @@ const BarChart = ({
                   y={h - xLabelSize}
                   width={barWidth}
                   height={
-                    ((h - xLabelSize - 50) / 5 / 20000) *
+                    ((h - xLabelSize - 50) / 5 /  (currency =='kr'? 20000: 2000)) *
                     revenueData[index + 12].revenue
                   }
                   fill={
@@ -268,7 +268,7 @@ const BarChart = ({
                     y={h - xLabelSize}
                     width={barWidth}
                     height={
-                      ((h - xLabelSize - 50) / 5 / 20000) *
+                      ((h - xLabelSize - 50) / 5 /  (currency =='kr'? 20000: 2000)) *
                       revenueData[index + 24].revenue
                     }
                     fill={
